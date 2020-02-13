@@ -11,7 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+message("miaou : ${gRPC_ZLIB_PROVIDER}")
+message("miaou : ${zlibstatic}")
+message("miaou : ${gRPC_INSTALL}")
 if("${gRPC_ZLIB_PROVIDER}" STREQUAL "module")
   if(NOT ZLIB_ROOT_DIR)
     set(ZLIB_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/zlib)
@@ -35,6 +37,8 @@ if("${gRPC_ZLIB_PROVIDER}" STREQUAL "module")
 elseif("${gRPC_ZLIB_PROVIDER}" STREQUAL "package")
   hunter_add_package(ZLIB)
   find_package(ZLIB CONFIG REQUIRED)
+  set_property(TARGET ZLIB::zlib PROPERTY POSITION_INDEPENDENT_CODE ON)
+
   set(_gRPC_ZLIB_LIBRARIES ZLIB::zlib)
   set(_gRPC_ZLIB_INCLUDE_DIR ${ZLIB_INCLUDE_DIRS})
   set(_gRPC_FIND_ZLIB "if(NOT ZLIB_FOUND)\n  find_package(ZLIB)\nendif()")
