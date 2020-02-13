@@ -13255,10 +13255,10 @@ target_include_directories(grpc_cpp_plugin
 )
 
 target_link_libraries(grpc_cpp_plugin
-  ${_gRPC_PROTOBUF_PROTOC_LIBRARIES}
-  ${_gRPC_PROTOBUF_LIBRARIES}
-  ${_gRPC_ALLTARGETS_LIBRARIES}
-  grpc_plugin_support
+  PUBLIC ${_gRPC_PROTOBUF_PROTOC_LIBRARIES}
+  PUBLIC ${_gRPC_PROTOBUF_LIBRARIES}
+  PUBLIC ${_gRPC_ALLTARGETS_LIBRARIES}
+  PUBLIC grpc_plugin_support
 )
 
 
