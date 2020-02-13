@@ -13264,7 +13264,7 @@ target_link_libraries(grpc_cpp_plugin
 
 
 if (gRPC_INSTALL)
-  set_property(TARGET protoc PROPERTY INSTALL_RPATH "$ORIGIN/../lib")
+  set_property(TARGET grpc_cpp_plugin PROPERTY INSTALL_RPATH "$ORIGIN/../lib")
   install(TARGETS grpc_cpp_plugin EXPORT gRPCTargets
     RUNTIME DESTINATION ${gRPC_INSTALL_BINDIR}
     LIBRARY DESTINATION ${gRPC_INSTALL_LIBDIR}
