@@ -33,16 +33,6 @@ if("${gRPC_ZLIB_PROVIDER}" STREQUAL "module")
     set(gRPC_INSTALL FALSE)
   endif()
 elseif("${gRPC_ZLIB_PROVIDER}" STREQUAL "package")
-  hunter_config(
-          zlib
-          VERSION
-          8ce5d756dc79882b8dcc418c57815fdd586d319c
-          URL
-          "https://github.com/Nepta/zlib/archive/8ce5d756dc79882b8dcc418c57815fdd586d319c.zip"
-          SHA1
-          2a803da5f62f35d0828e37ef6eb506ec4f309bf7
-  )
-
   hunter_add_package(ZLIB)
   find_package(ZLIB CONFIG REQUIRED)
   set(_gRPC_ZLIB_LIBRARIES ZLIB::zlib)
