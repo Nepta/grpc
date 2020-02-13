@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 if("${gRPC_ZLIB_PROVIDER}" STREQUAL "module")
   if(NOT ZLIB_ROOT_DIR)
     set(ZLIB_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/zlib)
@@ -34,9 +35,7 @@ if("${gRPC_ZLIB_PROVIDER}" STREQUAL "module")
 elseif("${gRPC_ZLIB_PROVIDER}" STREQUAL "package")
   hunter_add_package(ZLIB)
   find_package(ZLIB CONFIG REQUIRED)
-  set_property(TARGET ZLIB::zlib PROPERTY POSITION_INDEPENDENT_CODE ON)
-  add_library(_gRPC_ZLIB_LIBRARIES SHARED ${ZLIB_SRCS} ${ZLIB_ASMS} ${ZLIB_DLL_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
-#  set(_gRPC_ZLIB_LIBRARIES ZLIB::zlib)
+  set(_gRPC_ZLIB_LIBRARIES ZLIB::zlib)
   set(_gRPC_ZLIB_INCLUDE_DIR ${ZLIB_INCLUDE_DIRS})
   set(_gRPC_FIND_ZLIB "if(NOT ZLIB_FOUND)\n  find_package(ZLIB)\nendif()")
 endif()
