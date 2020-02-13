@@ -13255,15 +13255,16 @@ target_include_directories(grpc_cpp_plugin
 )
 
 target_link_libraries(grpc_cpp_plugin
-  PUBLIC ${_gRPC_PROTOBUF_PROTOC_LIBRARIES}
-  PUBLIC ${_gRPC_PROTOBUF_LIBRARIES}
-  PUBLIC ${_gRPC_ALLTARGETS_LIBRARIES}
-  PUBLIC grpc_plugin_support
+  ${_gRPC_PROTOBUF_PROTOC_LIBRARIES}
+  ${_gRPC_PROTOBUF_LIBRARIES}
+  ${_gRPC_ALLTARGETS_LIBRARIES}
+  grpc_plugin_support
 )
 
 
 
 if (gRPC_INSTALL)
+  set_property(TARGET protoc PROPERTY INSTALL_RPATH "$ORIGIN/../lib")
   install(TARGETS grpc_cpp_plugin EXPORT gRPCTargets
     RUNTIME DESTINATION ${gRPC_INSTALL_BINDIR}
     LIBRARY DESTINATION ${gRPC_INSTALL_LIBDIR}
