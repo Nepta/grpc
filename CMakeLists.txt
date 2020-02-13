@@ -1338,12 +1338,12 @@ target_include_directories(grpc
 target_link_libraries(grpc
   ${_gRPC_BASELIB_LIBRARIES}
   ${_gRPC_SSL_LIBRARIES}
-  PUBLIC ${_gRPC_ZLIB_LIBRARIES}
   ${_gRPC_CARES_LIBRARIES}
   ${_gRPC_ADDRESS_SORTING_LIBRARIES}
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gpr
 )
+target_link_libraries(grpc PUBLIC ${_gRPC_ZLIB_LIBRARIES})
 
 foreach(_hdr
   include/grpc/impl/codegen/byte_buffer.h
@@ -1724,12 +1724,12 @@ target_include_directories(grpc_cronet
 target_link_libraries(grpc_cronet
   ${_gRPC_BASELIB_LIBRARIES}
   ${_gRPC_SSL_LIBRARIES}
-  ${_gRPC_ZLIB_LIBRARIES}
   ${_gRPC_CARES_LIBRARIES}
   ${_gRPC_ADDRESS_SORTING_LIBRARIES}
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gpr
 )
+target_link_libraries(grpc_cronet PUBLIC ${_gRPC_ZLIB_LIBRARIES})
 
 foreach(_hdr
   include/grpc/impl/codegen/byte_buffer.h
@@ -2702,12 +2702,12 @@ target_include_directories(grpc_unsecure
   endif()
 target_link_libraries(grpc_unsecure
   ${_gRPC_BASELIB_LIBRARIES}
-  ${_gRPC_ZLIB_LIBRARIES}
   ${_gRPC_CARES_LIBRARIES}
   ${_gRPC_ADDRESS_SORTING_LIBRARIES}
   ${_gRPC_ALLTARGETS_LIBRARIES}
   gpr
 )
+target_link_libraries(grpc_unsecure PUBLIC ${_gRPC_ZLIB_LIBRARIES})
 
 foreach(_hdr
   include/grpc/impl/codegen/byte_buffer.h
